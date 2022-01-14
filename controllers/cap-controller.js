@@ -19,7 +19,7 @@ const capController = {
 
 const createScreenCapture = async (uri) => {
   try {
-    const chrome = await playwright.chromium.launch();
+    const chrome = await playwright.chromium.launch({ args: ["--no-sandbox"] });
     const chromePage = await chrome.newPage();
     await chromePage.goto(uri);
     const buffer = await chromePage.screenshot();
